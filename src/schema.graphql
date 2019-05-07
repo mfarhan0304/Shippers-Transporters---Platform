@@ -1,0 +1,33 @@
+type Query {
+    jobs: [Job!]!
+    bids: [Bid!]!
+    bidsToJob(id: ID!): [Bid]
+    jobsByOrigin: [Job!]!
+    jobsByDestination: [Job!]!
+    jobsByBudget: [Job!]!
+    jobsByDistance: [Job!]!
+    jobsByTransporterName: [Job!]!
+    jobsByShipmentDate: [Job!]!
+    bidsByTransporterRating: [Bid!]!
+    bidsByPrice: [Bid!]!
+    bidsByVehicleName: [Bid!]!
+}
+
+type Job {
+    id: ID!
+    origin: String!
+    destination: String!
+    budget: Float!
+    shipment_date: String!
+    distance: Float!
+}
+
+type Bid {
+    id: ID!
+    job_id: Job!
+    transporter_name: String!
+    transporter_rating: String!
+    price: Float!
+    vehicle_name: String!
+}
+
