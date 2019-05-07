@@ -1,0 +1,23 @@
+{
+  "name": "Shippers-Transporters---Platform",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mfarhan0304/Shippers-Transporters---Platform.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mfarhan0304/Shippers-Transporters---Platform/issues"
+  },
+  "homepage": "https://github.com/mfarhan0304/Shippers-Transporters---Platform#readme",
+  "dependencies": {
+    "graphql-yoga": "^1.17.4"
+  }
+}
