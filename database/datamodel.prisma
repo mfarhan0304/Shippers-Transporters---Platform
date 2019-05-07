@@ -1,0 +1,18 @@
+type Job {
+  id: Int! @id
+  origin: String!
+  destination: String!
+  budget: Float!
+  shipment_date: String!
+  distance: Float!
+}
+
+type Bid {
+  bid_id: Int! @id
+  id: Int!
+  job_id: Job!
+  transporter_name: String!
+  transporter_rating: String!
+  price: Float!
+  vehicle_name: String!
+}

@@ -1,7 +1,7 @@
 type Query {
     jobs: [Job!]!
     bids: [Bid!]!
-    bidsToJob(id: ID!): [Bid]
+    bidsToJob(job_id: Int!): [Bid]
     jobsByOrigin: [Job!]!
     jobsByDestination: [Job!]!
     jobsByBudget: [Job!]!
@@ -14,7 +14,7 @@ type Query {
 }
 
 type Job {
-    id: ID!
+    id: Int!
     origin: String!
     destination: String!
     budget: Float!
@@ -23,7 +23,8 @@ type Job {
 }
 
 type Bid {
-    id: ID!
+    bid_id: Int!
+    id: Int!
     job_id: Job!
     transporter_name: String!
     transporter_rating: String!

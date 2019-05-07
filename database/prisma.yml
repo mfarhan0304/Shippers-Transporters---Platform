@@ -1,0 +1,6 @@
+endpoint: https://us1.prisma.sh/muhammad-farhan-f93c9b/database/dev
+datamodel: datamodel.prisma
+
+hooks:
+  post-deploy:
+    - graphql get-schema

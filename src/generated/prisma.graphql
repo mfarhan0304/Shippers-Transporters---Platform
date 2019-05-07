@@ -1,0 +1,740 @@
+# source: https://us1.prisma.sh/muhammad-farhan-f93c9b/database/dev
+# timestamp: Tue May 07 2019 12:36:22 GMT+0700 (Western Indonesia Time)
+
+type AggregateBid {
+  count: Int!
+}
+
+type AggregateJob {
+  count: Int!
+}
+
+type BatchPayload {
+  """The number of nodes that have been affected by the Batch operation."""
+  count: Long!
+}
+
+type Bid {
+  bid_id: Int!
+  id: Int!
+  job_id: Job!
+  transporter_name: String!
+  transporter_rating: String!
+  price: Float!
+  vehicle_name: String!
+}
+
+"""A connection to a list of items."""
+type BidConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [BidEdge]!
+  aggregate: AggregateBid!
+}
+
+input BidCreateInput {
+  id: Int!
+  transporter_name: String!
+  transporter_rating: String!
+  price: Float!
+  vehicle_name: String!
+  job_id: JobCreateOneInput!
+}
+
+"""An edge in a connection."""
+type BidEdge {
+  """The item at the end of the edge."""
+  node: Bid!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum BidOrderByInput {
+  bid_id_ASC
+  bid_id_DESC
+  id_ASC
+  id_DESC
+  transporter_name_ASC
+  transporter_name_DESC
+  transporter_rating_ASC
+  transporter_rating_DESC
+  price_ASC
+  price_DESC
+  vehicle_name_ASC
+  vehicle_name_DESC
+}
+
+type BidPreviousValues {
+  bid_id: Int!
+  id: Int!
+  transporter_name: String!
+  transporter_rating: String!
+  price: Float!
+  vehicle_name: String!
+}
+
+type BidSubscriptionPayload {
+  mutation: MutationType!
+  node: Bid
+  updatedFields: [String!]
+  previousValues: BidPreviousValues
+}
+
+input BidSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BidSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BidSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BidSubscriptionWhereInput!]
+
+  """The subscription event gets dispatched when it's listed in mutation_in"""
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: BidWhereInput
+}
+
+input BidUpdateInput {
+  id: Int
+  transporter_name: String
+  transporter_rating: String
+  price: Float
+  vehicle_name: String
+  job_id: JobUpdateOneRequiredInput
+}
+
+input BidUpdateManyMutationInput {
+  id: Int
+  transporter_name: String
+  transporter_rating: String
+  price: Float
+  vehicle_name: String
+}
+
+input BidWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BidWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BidWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BidWhereInput!]
+  bid_id: Int
+
+  """All values that are not equal to given value."""
+  bid_id_not: Int
+
+  """All values that are contained in given list."""
+  bid_id_in: [Int!]
+
+  """All values that are not contained in given list."""
+  bid_id_not_in: [Int!]
+
+  """All values less than the given value."""
+  bid_id_lt: Int
+
+  """All values less than or equal the given value."""
+  bid_id_lte: Int
+
+  """All values greater than the given value."""
+  bid_id_gt: Int
+
+  """All values greater than or equal the given value."""
+  bid_id_gte: Int
+  id: Int
+
+  """All values that are not equal to given value."""
+  id_not: Int
+
+  """All values that are contained in given list."""
+  id_in: [Int!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [Int!]
+
+  """All values less than the given value."""
+  id_lt: Int
+
+  """All values less than or equal the given value."""
+  id_lte: Int
+
+  """All values greater than the given value."""
+  id_gt: Int
+
+  """All values greater than or equal the given value."""
+  id_gte: Int
+  transporter_name: String
+
+  """All values that are not equal to given value."""
+  transporter_name_not: String
+
+  """All values that are contained in given list."""
+  transporter_name_in: [String!]
+
+  """All values that are not contained in given list."""
+  transporter_name_not_in: [String!]
+
+  """All values less than the given value."""
+  transporter_name_lt: String
+
+  """All values less than or equal the given value."""
+  transporter_name_lte: String
+
+  """All values greater than the given value."""
+  transporter_name_gt: String
+
+  """All values greater than or equal the given value."""
+  transporter_name_gte: String
+
+  """All values containing the given string."""
+  transporter_name_contains: String
+
+  """All values not containing the given string."""
+  transporter_name_not_contains: String
+
+  """All values starting with the given string."""
+  transporter_name_starts_with: String
+
+  """All values not starting with the given string."""
+  transporter_name_not_starts_with: String
+
+  """All values ending with the given string."""
+  transporter_name_ends_with: String
+
+  """All values not ending with the given string."""
+  transporter_name_not_ends_with: String
+  transporter_rating: String
+
+  """All values that are not equal to given value."""
+  transporter_rating_not: String
+
+  """All values that are contained in given list."""
+  transporter_rating_in: [String!]
+
+  """All values that are not contained in given list."""
+  transporter_rating_not_in: [String!]
+
+  """All values less than the given value."""
+  transporter_rating_lt: String
+
+  """All values less than or equal the given value."""
+  transporter_rating_lte: String
+
+  """All values greater than the given value."""
+  transporter_rating_gt: String
+
+  """All values greater than or equal the given value."""
+  transporter_rating_gte: String
+
+  """All values containing the given string."""
+  transporter_rating_contains: String
+
+  """All values not containing the given string."""
+  transporter_rating_not_contains: String
+
+  """All values starting with the given string."""
+  transporter_rating_starts_with: String
+
+  """All values not starting with the given string."""
+  transporter_rating_not_starts_with: String
+
+  """All values ending with the given string."""
+  transporter_rating_ends_with: String
+
+  """All values not ending with the given string."""
+  transporter_rating_not_ends_with: String
+  price: Float
+
+  """All values that are not equal to given value."""
+  price_not: Float
+
+  """All values that are contained in given list."""
+  price_in: [Float!]
+
+  """All values that are not contained in given list."""
+  price_not_in: [Float!]
+
+  """All values less than the given value."""
+  price_lt: Float
+
+  """All values less than or equal the given value."""
+  price_lte: Float
+
+  """All values greater than the given value."""
+  price_gt: Float
+
+  """All values greater than or equal the given value."""
+  price_gte: Float
+  vehicle_name: String
+
+  """All values that are not equal to given value."""
+  vehicle_name_not: String
+
+  """All values that are contained in given list."""
+  vehicle_name_in: [String!]
+
+  """All values that are not contained in given list."""
+  vehicle_name_not_in: [String!]
+
+  """All values less than the given value."""
+  vehicle_name_lt: String
+
+  """All values less than or equal the given value."""
+  vehicle_name_lte: String
+
+  """All values greater than the given value."""
+  vehicle_name_gt: String
+
+  """All values greater than or equal the given value."""
+  vehicle_name_gte: String
+
+  """All values containing the given string."""
+  vehicle_name_contains: String
+
+  """All values not containing the given string."""
+  vehicle_name_not_contains: String
+
+  """All values starting with the given string."""
+  vehicle_name_starts_with: String
+
+  """All values not starting with the given string."""
+  vehicle_name_not_starts_with: String
+
+  """All values ending with the given string."""
+  vehicle_name_ends_with: String
+
+  """All values not ending with the given string."""
+  vehicle_name_not_ends_with: String
+  job_id: JobWhereInput
+}
+
+input BidWhereUniqueInput {
+  bid_id: Int
+}
+
+type Job {
+  id: Int!
+  origin: String!
+  destination: String!
+  budget: Float!
+  shipment_date: String!
+  distance: Float!
+}
+
+"""A connection to a list of items."""
+type JobConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [JobEdge]!
+  aggregate: AggregateJob!
+}
+
+input JobCreateInput {
+  origin: String!
+  destination: String!
+  budget: Float!
+  shipment_date: String!
+  distance: Float!
+}
+
+input JobCreateOneInput {
+  create: JobCreateInput
+  connect: JobWhereUniqueInput
+}
+
+"""An edge in a connection."""
+type JobEdge {
+  """The item at the end of the edge."""
+  node: Job!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum JobOrderByInput {
+  id_ASC
+  id_DESC
+  origin_ASC
+  origin_DESC
+  destination_ASC
+  destination_DESC
+  budget_ASC
+  budget_DESC
+  shipment_date_ASC
+  shipment_date_DESC
+  distance_ASC
+  distance_DESC
+}
+
+type JobPreviousValues {
+  id: Int!
+  origin: String!
+  destination: String!
+  budget: Float!
+  shipment_date: String!
+  distance: Float!
+}
+
+type JobSubscriptionPayload {
+  mutation: MutationType!
+  node: Job
+  updatedFields: [String!]
+  previousValues: JobPreviousValues
+}
+
+input JobSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [JobSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [JobSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [JobSubscriptionWhereInput!]
+
+  """The subscription event gets dispatched when it's listed in mutation_in"""
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: JobWhereInput
+}
+
+input JobUpdateDataInput {
+  origin: String
+  destination: String
+  budget: Float
+  shipment_date: String
+  distance: Float
+}
+
+input JobUpdateInput {
+  origin: String
+  destination: String
+  budget: Float
+  shipment_date: String
+  distance: Float
+}
+
+input JobUpdateManyMutationInput {
+  origin: String
+  destination: String
+  budget: Float
+  shipment_date: String
+  distance: Float
+}
+
+input JobUpdateOneRequiredInput {
+  create: JobCreateInput
+  connect: JobWhereUniqueInput
+  update: JobUpdateDataInput
+  upsert: JobUpsertNestedInput
+}
+
+input JobUpsertNestedInput {
+  update: JobUpdateDataInput!
+  create: JobCreateInput!
+}
+
+input JobWhereInput {
+  """Logical AND on all given filters."""
+  AND: [JobWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [JobWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [JobWhereInput!]
+  id: Int
+
+  """All values that are not equal to given value."""
+  id_not: Int
+
+  """All values that are contained in given list."""
+  id_in: [Int!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [Int!]
+
+  """All values less than the given value."""
+  id_lt: Int
+
+  """All values less than or equal the given value."""
+  id_lte: Int
+
+  """All values greater than the given value."""
+  id_gt: Int
+
+  """All values greater than or equal the given value."""
+  id_gte: Int
+  origin: String
+
+  """All values that are not equal to given value."""
+  origin_not: String
+
+  """All values that are contained in given list."""
+  origin_in: [String!]
+
+  """All values that are not contained in given list."""
+  origin_not_in: [String!]
+
+  """All values less than the given value."""
+  origin_lt: String
+
+  """All values less than or equal the given value."""
+  origin_lte: String
+
+  """All values greater than the given value."""
+  origin_gt: String
+
+  """All values greater than or equal the given value."""
+  origin_gte: String
+
+  """All values containing the given string."""
+  origin_contains: String
+
+  """All values not containing the given string."""
+  origin_not_contains: String
+
+  """All values starting with the given string."""
+  origin_starts_with: String
+
+  """All values not starting with the given string."""
+  origin_not_starts_with: String
+
+  """All values ending with the given string."""
+  origin_ends_with: String
+
+  """All values not ending with the given string."""
+  origin_not_ends_with: String
+  destination: String
+
+  """All values that are not equal to given value."""
+  destination_not: String
+
+  """All values that are contained in given list."""
+  destination_in: [String!]
+
+  """All values that are not contained in given list."""
+  destination_not_in: [String!]
+
+  """All values less than the given value."""
+  destination_lt: String
+
+  """All values less than or equal the given value."""
+  destination_lte: String
+
+  """All values greater than the given value."""
+  destination_gt: String
+
+  """All values greater than or equal the given value."""
+  destination_gte: String
+
+  """All values containing the given string."""
+  destination_contains: String
+
+  """All values not containing the given string."""
+  destination_not_contains: String
+
+  """All values starting with the given string."""
+  destination_starts_with: String
+
+  """All values not starting with the given string."""
+  destination_not_starts_with: String
+
+  """All values ending with the given string."""
+  destination_ends_with: String
+
+  """All values not ending with the given string."""
+  destination_not_ends_with: String
+  budget: Float
+
+  """All values that are not equal to given value."""
+  budget_not: Float
+
+  """All values that are contained in given list."""
+  budget_in: [Float!]
+
+  """All values that are not contained in given list."""
+  budget_not_in: [Float!]
+
+  """All values less than the given value."""
+  budget_lt: Float
+
+  """All values less than or equal the given value."""
+  budget_lte: Float
+
+  """All values greater than the given value."""
+  budget_gt: Float
+
+  """All values greater than or equal the given value."""
+  budget_gte: Float
+  shipment_date: String
+
+  """All values that are not equal to given value."""
+  shipment_date_not: String
+
+  """All values that are contained in given list."""
+  shipment_date_in: [String!]
+
+  """All values that are not contained in given list."""
+  shipment_date_not_in: [String!]
+
+  """All values less than the given value."""
+  shipment_date_lt: String
+
+  """All values less than or equal the given value."""
+  shipment_date_lte: String
+
+  """All values greater than the given value."""
+  shipment_date_gt: String
+
+  """All values greater than or equal the given value."""
+  shipment_date_gte: String
+
+  """All values containing the given string."""
+  shipment_date_contains: String
+
+  """All values not containing the given string."""
+  shipment_date_not_contains: String
+
+  """All values starting with the given string."""
+  shipment_date_starts_with: String
+
+  """All values not starting with the given string."""
+  shipment_date_not_starts_with: String
+
+  """All values ending with the given string."""
+  shipment_date_ends_with: String
+
+  """All values not ending with the given string."""
+  shipment_date_not_ends_with: String
+  distance: Float
+
+  """All values that are not equal to given value."""
+  distance_not: Float
+
+  """All values that are contained in given list."""
+  distance_in: [Float!]
+
+  """All values that are not contained in given list."""
+  distance_not_in: [Float!]
+
+  """All values less than the given value."""
+  distance_lt: Float
+
+  """All values less than or equal the given value."""
+  distance_lte: Float
+
+  """All values greater than the given value."""
+  distance_gt: Float
+
+  """All values greater than or equal the given value."""
+  distance_gte: Float
+}
+
+input JobWhereUniqueInput {
+  id: Int
+}
+
+"""
+The `Long` scalar type represents non-fractional signed whole numeric values.
+Long can represent values between -(2^63) and 2^63 - 1.
+"""
+scalar Long
+
+type Mutation {
+  createBid(data: BidCreateInput!): Bid!
+  createJob(data: JobCreateInput!): Job!
+  updateBid(data: BidUpdateInput!, where: BidWhereUniqueInput!): Bid
+  updateJob(data: JobUpdateInput!, where: JobWhereUniqueInput!): Job
+  deleteBid(where: BidWhereUniqueInput!): Bid
+  deleteJob(where: JobWhereUniqueInput!): Job
+  upsertBid(where: BidWhereUniqueInput!, create: BidCreateInput!, update: BidUpdateInput!): Bid!
+  upsertJob(where: JobWhereUniqueInput!, create: JobCreateInput!, update: JobUpdateInput!): Job!
+  updateManyBids(data: BidUpdateManyMutationInput!, where: BidWhereInput): BatchPayload!
+  updateManyJobs(data: JobUpdateManyMutationInput!, where: JobWhereInput): BatchPayload!
+  deleteManyBids(where: BidWhereInput): BatchPayload!
+  deleteManyJobs(where: JobWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+"""An object with an ID"""
+interface Node {
+  """The id of the object."""
+  id: ID!
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+type Query {
+  bids(where: BidWhereInput, orderBy: BidOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Bid]!
+  jobs(where: JobWhereInput, orderBy: JobOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Job]!
+  bid(where: BidWhereUniqueInput!): Bid
+  job(where: JobWhereUniqueInput!): Job
+  bidsConnection(where: BidWhereInput, orderBy: BidOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BidConnection!
+  jobsConnection(where: JobWhereInput, orderBy: JobOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): JobConnection!
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+}
+
+type Subscription {
+  bid(where: BidSubscriptionWhereInput): BidSubscriptionPayload
+  job(where: JobSubscriptionWhereInput): JobSubscriptionPayload
+}
