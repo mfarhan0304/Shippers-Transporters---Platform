@@ -2,15 +2,8 @@ type Query {
     jobs: [Job!]!
     bids: [Bid!]!
     bidsToJob(job_id: Int!): [Bid]
-    jobsByOrigin: [Job!]!
-    jobsByDestination: [Job!]!
-    jobsByBudget: [Job!]!
-    jobsByDistance: [Job!]!
-    jobsByTransporterName: [Job!]!
-    jobsByShipmentDate: [Job!]!
-    bidsByTransporterRating: [Bid!]!
-    bidsByPrice: [Bid!]!
-    bidsByVehicleName: [Bid!]!
+    jobsOrdered(orderBy: JobOrderByInput!): [Job!]!
+    bidsOrdered(orderBy: BidOrderByInput!): [Bid!]!
 }
 
 type Job {
@@ -32,3 +25,26 @@ type Bid {
     vehicle_name: String!
 }
 
+enum JobOrderByInput {
+    origin_ASC,
+    origin_DESC,
+    destination_ASC,
+    destination_DESC,
+    budget_ASC,
+    budget_DESC,
+    distance_ASC,
+    distance_DESC,
+    transporter_name_ASC,
+    transporter_name_DESC,
+    shipment_date_ASC,
+    shipment_date_DESC
+}
+
+enum BidOrderByInput {
+    transporter_rating_ASC,
+    transporter_rating_DESC,
+    price_ASC,
+    price_DESC,
+    vehicle_name_ASC,
+    vehicle_name_DESC
+}
