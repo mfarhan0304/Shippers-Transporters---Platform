@@ -1,3 +1,5 @@
+scalar Date
+
 type Query {
     jobs: [Job!]!
     bids: [Bid!]!
@@ -11,7 +13,7 @@ type Job {
     origin: String!
     destination: String!
     budget: Float!
-    shipment_date: String!
+    shipment_date: Date!
     distance: Float!
 }
 
