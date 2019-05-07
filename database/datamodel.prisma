@@ -12,7 +12,7 @@ type Bid {
   id: Int!
   job_id: Job!
   transporter_name: String!
-  transporter_rating: String!
+  transporter_rating: Float!
   price: Float!
   vehicle_name: String!
 }

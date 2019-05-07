@@ -13,8 +13,6 @@ const resolvers = {
       return ctx.db.query.bids({ where: {job_id: {id: args.job_id} } }, info)
     },
     jobsOrdered(parent, args, ctx, info) {
-      console.log(ctx);
-      console.log(info);
       return ctx.db.query.jobs({ orderBy: args.orderBy }, info)
     },
     bidsOrdered(parent, args, ctx, info) {
