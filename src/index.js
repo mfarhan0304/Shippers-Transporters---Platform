@@ -1,26 +1,5 @@
 const { GraphQLServer } = require('graphql-yoga')
 const { Prisma } = require('prisma-binding')
-const { GraphQLScalarType } = require('graphql')
-const { Kind } = require('graphql/language')
-
-const resolverMap = {
-  Date: new GraphQLScalarType({
-    name: 'Date',
-    description: 'Date custom scalar type',
-    parseValue(value) {
-      return new Date(value); // value from the client
-    },
-    serialize(value) {
-      return value.getTime(); // value sent to the client
-    },
-    parseLiteral(ast) {
-      if (ast.kind === Kind.INT) {
-        return new Date(ast.value) // ast value is always in string format
-      }
-      return null;
-    },
-  }),
-};
 
 const resolvers = {
   Query: {
@@ -34,6 +13,8 @@ const resolvers = {
       return ctx.db.query.bids({ where: {job_id: {id: args.job_id} } }, info)
     },
     jobsOrdered(parent, args, ctx, info) {
+      console.log(ctx);
+      console.log(info);
       return ctx.db.query.jobs({ orderBy: args.orderBy }, info)
     },
     bidsOrdered(parent, args, ctx, info) {

@@ -36,13 +36,13 @@ enum JobOrderByInput {
     budget_DESC,
     distance_ASC,
     distance_DESC,
-    transporter_name_ASC,
-    transporter_name_DESC,
     shipment_date_ASC,
     shipment_date_DESC
 }
 
 enum BidOrderByInput {
+    transporter_name_ASC,
+    transporter_name_DESC,
     transporter_rating_ASC,
     transporter_rating_DESC,
     price_ASC,

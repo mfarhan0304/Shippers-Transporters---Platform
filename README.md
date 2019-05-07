@@ -2,5 +2,10 @@
 ## How to Use
 ```
 npm i
-node src/index.js
+node run dev
+```
+
+## How to perform schema validation
+```
+node test
 ```
